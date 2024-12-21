@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Volume Minyak</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ff4d4d; /* Latar belakang merah */
+            margin: 0;
+            padding: 20px;
+            background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fG9pbCUyMGRyaWxsZXJ8ZW58MHx8fHwxNjYyMjY5NjY0&ixlib=rb-1.2.1&q=80&w=1080'); /* Gambar pengeboran minyak */
+            background-size: cover;
+            background-position: center;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.8); /* Latar belakang transparan */
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        input[type="number"], input[type="button"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="button"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="button"]:hover {
+            background-color: #218838;
+        }
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Kalkulator Volume Minyak</h1>
+    <label for="area">Luas Area (m²):</label>
+    <input type="number" id="area" placeholder="Masukkan luas area" required>
+
+    <label for="height">Tinggi Kolom Minyak (m):</label>
+    <input type="number" id="height" placeholder="Masukkan tinggi kolom minyak" required>
+
+    <input type="button" value="Hitung Volume" onclick="calculateVolume()">
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    function calculateVolume() {
+        const area = parseFloat(document.getElementById('area').value);
+        const height = parseFloat(document.getElementById('height').value);
+
+        if (isNaN(area) || isNaN(height) || area <= 0 || height <= 0) {
+            document.getElementById('result').innerText = 'Silakan masukkan nilai yang valid.';
+            return;
+        }
+
+        const volume = area * height; // Volume = Luas Area * Tinggi
+        document.getElementById('result').innerText = 'Volume Minyak: ' + volume.toFixed(2) + ' m³';
+    }
+</script>
+
+</body>
+</html>
